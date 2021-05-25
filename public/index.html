@@ -7,7 +7,7 @@
     <title>Restaurante</title>
 </head>
 <body>
-    <button onclick="mostrarMenu()">Todos</button>
+  <div id="menus"></div>
     <div id="anyadir">
         <input type="text" placeholder="Número menu" id="numeromenu" />
         <input type="text" placeholder="Primer plato" id="primerplato" />
@@ -15,15 +15,10 @@
         <input type="text" placeholder="Postre" id="postre" />
         <input type="text" placeholder="Precio" id="precio" />
         <button onclick="anyadir()">Añadir</button>
+        <button onclick="editar()">Editar</button>
+
       </div>
-      <div id="modificar">
-        <input type="text" placeholder="Modificar Número menu" id="numeromenu2" />
-        <input type="text" placeholder="Modificar Primer plato" id="primerplato2" />
-        <input type="text" placeholder="Modificar Segundo plato" id="segundoplato2" />
-        <input type="text" placeholder="Modificar Postre" id="postre2" />
-        <input type="text" placeholder="Modificar Precio" id="precio2" />
-        <button onclick="modificar()">Modificar</button>
-      </div>
+     
       <div id="feedback"></div>
  <script src="index.js"></script>    
 </body>

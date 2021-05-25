@@ -25,8 +25,8 @@ app.get("/api/menus", function (req, res) {
       });
   });
 
-app.post("/api/nuevoMenu/:numeromenu", function (req, res) {
-  db.collection("mesas").insertOne({ numeromenu: parseInt(req.params.numeromenu), primerplato: req.params.primerplato, segundoplato: req.params.segundoplato, postre:req.params.postre, precio:parseInt(req.params.precio) },
+app.post("/api/nuevoMenu", function (req, res) {
+  db.collection("mesas").insertOne({ numeromenu: parseInt(req.body.numeromenu), primerplato: req.body.primerplato, segundoplato: req.body.segundoplato, postre:req.body.postre, precio:parseFloat(req.body.precio) },
     function (error, datos) {
       error
         ? res.send({ error: true, contenido: error })
@@ -36,10 +36,10 @@ app.post("/api/nuevoMenu/:numeromenu", function (req, res) {
 });
 
 
-app.put("/api/editarMenu/:numeromenu", function (req, res) {
+app.put("/api/editarMenu", function (req, res) {
     db.collection("mesas").updateOne(
-      { numeromenu: req.params.numeromenu },
-      { $set: { primerplato: req.params.primerplato2, segundoplato: req.params.segundoplato2, postre:req.params.postre2, precio:parseInt(req.params.precio2)} },
+      { numeromenu: req.body.numeromenu },
+      { $set: { primerplato: req.body.primerplato, segundoplato: req.body.segundoplato, postre:req.body.postre, precio:parseFloat(req.body.precio)} },
       function (error, datos) {
         if (error !== null) {
           console.log(error);
@@ -51,9 +51,9 @@ app.put("/api/editarMenu/:numeromenu", function (req, res) {
     );
   });
 
-  app.delete("/api/borrarMenu/:numeromenu", function (req, res) {
+  app.delete("/api/borrarMenu", function (req, res) {
     db.collection("mesas").deleteOne(
-      { numeromenu: req.params.numeromenu },
+      { numeromenu: req.body.numeromenu },
       function (error, datos) {
         error
           ? res.send({ error: true, contenido: error })
